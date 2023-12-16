@@ -1,0 +1,45 @@
+<form
+  [formGroup]="signInForm"
+  (ngSubmit)="onSubmit()"
+  class="form flexibleVerti"
+  id="form2"
+>
+  <!-- <h1>Authentification</h1> -->
+  <img
+    id="brand"
+    src="../../../../assets/icons/brand-awareness.svg"
+    alt="login"
+  />
+  <input
+    type="email"
+    placeholder="e-mail"
+    class="form-control"
+    formControlName="email"
+    id="email"
+  />
+  <input
+    [type]="input ? 'text' : 'password'"
+    placeholder="Mot de passe"
+    class="form-control"
+    formControlName="password"
+    id="password"
+  />
+  <!-- <img id="eye" (click)="toggleShow()" src={{src}} alt="" /> -->
+  <a
+    *ngIf="showRedirection"
+    routerLink="/auth/lost"
+    class="link"
+    (mouseout)="showMe = false"
+    (mouseover)="showMe = true"
+    >lost password ?</a
+  >
+  <button
+    type="submit"
+    class="btn signinButton"
+    [disabled]="signInForm.invalid"
+  >
+    Connexion
+  </button>
+  <!-- <button type="button" class="btn signinButton" id="signUp" [routerLink]="['/auth/signup']" routerLinkActive="router-link-active" >Creer un compte →</button> -->
+  <p class="error">{{ errorMessages }}</p>
+</form>
