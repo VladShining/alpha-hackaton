@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RootComponent } from './component/root.component';
 import { BuilderComponent } from '../main/builder/builder.component';
 import { SpeakComponent } from '../speak/speak.component';
+import { ComponentAComponent } from '../main/component/a/a.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,13 @@ const routes: Routes = [
           title: 'profil',
         },
         component: SpeakComponent,
+      },
+      {
+        path: 'A',
+        data: {
+          title: 'profil',
+        },
+        component: ComponentAComponent,
       },
     ],
   },
