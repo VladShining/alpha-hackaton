@@ -1,4 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+body,
+body > div {
+  background-color: #e5e5e5;
+  color: #1a2230;
+  font-family: monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  padding: 1em;
+  border-radius: 5px;
+}
+button {
+  color: #212c3d;
+  padding: 1em;
+  margin: 1em;
+  font-family: monospace;
+  background-color: #e0e0e0;
+  border: solid 1px black;
+  border-radius: 10px;
+  font-size: medium;
+  cursor: pointer;
+  box-shadow: 1px 1px 5px #1a2230;
+  &:hover {
+    background-color: white;
+  }
+}
+input {
+  margin: 0.5em;
+  padding: 0.5em;
+  border-radius: 5px;
+}

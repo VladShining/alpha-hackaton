@@ -1,0 +1,14 @@
+.continer {
+  display: flex;
+  flex-direction: row;
+  flex-grow: unset;
+}
+#refresh {
+  max-height: fit-content;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}

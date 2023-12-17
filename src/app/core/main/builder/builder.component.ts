@@ -58,16 +58,14 @@ export class BuilderComponent implements OnInit {
     });
   }
   switchDevice() {
-    if (this.deviceStatus) {
-      this.deviceService.switchDevice(this.dataON).subscribe((retour) => {
-        console.log(retour);
-      });
-      this.deviceStatus = !this.deviceStatus;
-    } else {
+    if (this.switch === 'ON') {
       this.deviceService.switchDevice(this.dataOFF).subscribe((retour) => {
         console.log(retour);
       });
-      this.deviceStatus = !this.deviceStatus;
+    } else if (this.switch === 'OFF') {
+      this.deviceService.switchDevice(this.dataON).subscribe((retour) => {
+        console.log(retour);
+      });
     }
     this.onCheckDevice();
   }

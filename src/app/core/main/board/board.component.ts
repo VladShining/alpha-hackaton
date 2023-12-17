@@ -16,4 +16,7 @@ export class BoardComponent implements OnInit {
       this.instances.push({});
     }
   }
+  refresh() {
+    window.location.reload();
+  }
 }

@@ -1,3 +1,8 @@
-<div *ngFor="let instance of instances; let i = index">
-  <app-builder [inputDeviceId]="instance"></app-builder>
+<div class="wrapper">
+  <button (click)="refresh()" id="refresh">Rafraichir</button>
+  <div class="continer">
+    <div *ngFor="let instance of instances; let i = index">
+      <app-builder [inputDeviceId]="instance"></app-builder>
+    </div>
+  </div>
 </div>
