@@ -1,3 +1,9 @@
 <button (click)="onCheckDevice()">Click me</button>
-<button (click)="onCheckDeviceStat()">stat</button>
-<button (click)="switchDevice()">off</button>
+<hr />
+<p>VOLTAGE : {{ volt }} V</p>
+<p>CURRENT : {{ current }} A</p>
+<p>PUISSANCE : {{ puissance }} W</p>
+<p>SWITCH : {{ switch }}</p>
+<!-- <button (click)="onCheckDeviceStat()">stat</button> -->
+<button (click)="switchDevice()">{{ switchButton }}</button>
+<hr />

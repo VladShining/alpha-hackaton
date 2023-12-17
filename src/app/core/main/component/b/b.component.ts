@@ -1,8 +1,8 @@
-// component-b.component.ts
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-component-b',
+  styleUrls: ['./b.component.scss'],
   templateUrl: './b.component.html',
 })
 export class ComponentBComponent {
@@ -10,9 +10,9 @@ export class ComponentBComponent {
   @Output() deleteEvent = new EventEmitter<string>();
   id!: string;
   inputValue: string = '';
+  labelValue: string = '';
 
   onSave() {
-    // Emit the input value to Component A
     this.saveEvent.emit(this.inputValue);
   }
 

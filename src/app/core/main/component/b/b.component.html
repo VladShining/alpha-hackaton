@@ -1,5 +1,8 @@
 <div>
-  <p>Component B - {{ id }}</p>
-  <input [(ngModel)]="inputValue" />
-  <button (click)="onDelete()">Delete Component B</button>
+  <p>Device Id : {{ id }}</p>
+  <label for="id"> DeviceId</label>
+  <input [(ngModel)]="inputValue" name="id" />
+  <label for="label"> Label</label>
+  <input [(ngModel)]="labelValue" name="label" />
+  <button (click)="onDelete()">Delete</button>
 </div>

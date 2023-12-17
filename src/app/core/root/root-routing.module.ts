@@ -4,6 +4,7 @@ import { RootComponent } from './component/root.component';
 import { BuilderComponent } from '../main/builder/builder.component';
 import { SpeakComponent } from '../speak/speak.component';
 import { ComponentAComponent } from '../main/component/a/a.component';
+import { BoardComponent } from '../main/board/board.component';
 
 const routes: Routes = [
   {
@@ -21,21 +22,21 @@ const routes: Routes = [
       {
         path: 'main',
         data: {
-          title: 'profil',
+          title: 'main',
         },
-        component: BuilderComponent,
+        component: BoardComponent,
       },
       {
         path: 'speak',
         data: {
-          title: 'profil',
+          title: 'speak',
         },
         component: SpeakComponent,
       },
       {
-        path: 'A',
+        path: 'device',
         data: {
-          title: 'profil',
+          title: 'device',
         },
         component: ComponentAComponent,
       },

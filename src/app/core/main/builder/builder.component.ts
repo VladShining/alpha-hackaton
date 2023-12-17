@@ -1,5 +1,5 @@
 import { devMail, deviceId } from './../../../../env';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DeviceService } from '../../root/service/device.service';
 import { developerId } from 'src/env';
 
@@ -10,6 +10,12 @@ import { developerId } from 'src/env';
 })
 export class BuilderComponent implements OnInit {
   deviceStatus: boolean = false;
+  volt: string = '';
+  current: string = '';
+  puissance: string = '';
+  switch: string = '';
+  switchButton: string = '';
+
   dataOFF = {
     developerId: developerId,
     email: devMail,
@@ -22,9 +28,12 @@ export class BuilderComponent implements OnInit {
     deviceId: deviceId,
     switch_status: 'ON',
   };
-  constructor(private deviceService: DeviceService) {}
 
-  ngOnInit() {}
+  constructor(private deviceService: DeviceService) {}
+  @Input() inputDeviceId: string = '';
+  ngOnInit() {
+    this.onCheckDevice();
+  }
 
   onCheckMail() {
     this.deviceService.check_developerCredentials().subscribe((data) => {
@@ -32,9 +41,16 @@ export class BuilderComponent implements OnInit {
     });
   }
   onCheckDevice() {
-    this.deviceService.check_deviceStatus().subscribe((data) => {
-      console.log(data);
+    this.deviceService.check_deviceStatus().subscribe((ret) => {
+      this.updateData(ret);
     });
+  }
+  updateData(_data: any) {
+    this.volt = _data.result.status.actual_voltage;
+    this.current = _data.result.status.actual_current;
+    this.puissance = _data.result.status.actual_power;
+    this.switch = _data.result.status.switch ? 'ON' : 'OFF';
+    this.switchButton = _data.result.status.switch ? 'ETEINDRE' : 'ALLUMER';
   }
   onCheckDeviceStat() {
     this.deviceService.get_deviceStatistics().subscribe((data) => {
@@ -53,5 +69,6 @@ export class BuilderComponent implements OnInit {
       });
       this.deviceStatus = !this.deviceStatus;
     }
+    this.onCheckDevice();
   }
 }

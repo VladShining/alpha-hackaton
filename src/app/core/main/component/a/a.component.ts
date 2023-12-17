@@ -8,13 +8,14 @@ import { ComponentBComponent } from '../b/b.component';
 
 @Component({
   selector: 'app-component-a',
+  styleUrls: ['./a.component.scss'],
   template: `
     <div>
-      <button (click)="createComponentB()">Create Component B</button>
-      <button (click)="saveValues()">Save Values from Active Components</button>
+      <button (click)="createComponentB()">Ajout Device</button>
+      <button (click)="saveValues()">Tous Enregistrer</button>
       <ng-container #componentBContainer></ng-container>
       <div *ngFor="let value of values">
-        Value from Component B ({{ value.id }}): {{ value.value }}
+        Id de {{ value.id }} : {{ value.value }}
       </div>
     </div>
   `,
@@ -40,8 +41,8 @@ export class ComponentAComponent {
     const uniqueId = `component-b-${this.componentBCounter++}`;
     componentRef.instance.id = uniqueId;
 
-    componentRef.instance.saveEvent.subscribe((value: string) =>
-      this.onSaveFromComponentB(uniqueId, value)
+    componentRef.instance.saveEvent.subscribe((id: string, label: string) =>
+      this.onSaveFromComponentB(uniqueId, id, label)
     );
     componentRef.instance.deleteEvent.subscribe(() =>
       this.deleteComponentB(componentRef)
@@ -50,14 +51,12 @@ export class ComponentAComponent {
     this.componentBRefs.push(componentRef);
   }
 
-  private onSaveFromComponentB(id: string, value: string) {
+  private onSaveFromComponentB(id: string, value: string, label: string) {
     const existingIndex = this.values.findIndex((item) => item.id === id);
 
     if (existingIndex !== -1) {
-      // Update the existing value
       this.values[existingIndex].value = value;
     } else {
-      // Add a new value
       this.values.push({ id, value });
     }
     console.log(this.values);
@@ -74,19 +73,12 @@ export class ComponentAComponent {
 
   saveValues() {
     this.componentBRefs.forEach((componentRef) => {
-      // Trigger save for each active ComponentBComponent
       componentRef.instance.triggerSave();
     });
-
-    // Clear the values array
     this.values = [];
-
-    // Populate the values array with the updated values from active ComponentBComponents
     this.componentBRefs.forEach((componentRef) => {
       const id = componentRef.instance.id;
       const value = componentRef.instance.inputValue;
-
-      // Add a new value
       this.values.push({ id, value });
     });
 
